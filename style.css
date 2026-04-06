@@ -1,7 +1,8 @@
 button {
-    width: 30%; 
+    width: 40%; 
     height: 10%; 
     background-color: blue; 
     color: white;
     font-size: 150%;
+    margin: 1%;
 }
