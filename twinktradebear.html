@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="style.css">
+<body style="background-color: #ede0d6; margin: 5%;">
+
+    <script>
+
+        function update(type) {
+            let count = document.getElementById(type + "Count");
+            let newcount = parseInt(count.textContent) + 1
+            count.textContent = newcount.toString()
+            newPlayer();
+        }
+
+        function newPlayer() {
+
+            let players = fetch('./players.json')
+                .then(function (response) {
+                    return response.json()
+                })
+                .then(function (data) {
+                    let number = Math.floor(Math.random() * data.length)
+
+                    document.getElementById("output").textContent = JSON.stringify(data[number]["Name"]);
+                    document.getElementById("image").src = "https://img.mlbstatic.com/mlb-photos/image/upload/w_213,d_people:generic:headshot:silo:current.png,q_auto:best,f_auto/v1/people/" +
+                        (data[number]["Id"]) + "/headshot/67/current";
+                });
+
+        }
+
+        
+
+    </script>
+    <div>
+        <span id="twinkCounter"> twink count: </span>
+        <span id="twinkCount">0</span>
+    </div>
+
+    <div>
+        <span id="bearCounter"> bear count: </span>
+        <span id="bearCount">0</span>
+    </div>
+
+    <div>
+        <span id="tradeCounter"> trade count: </span>
+        <span id="tradeCount">0</span>
+    </div>
+
+    <p id="counters"></p>
+
+    <img id="image"
+        src=https://img.mlbstatic.com/mlb-photos/image/upload/w_213,d_people:generic:headshot:silo:current.png,q_auto:best,f_auto/v1/people/444482/headshot/67/current>
+    <p id="output" style="color: darkblue; "> "David Peralta" </p>
+
+
+
+    <button onclick="update('twink');">twink</button>
+    <button onclick="update('bear');">bear</button>
+    <button onclick="update('trade');">trade</button>
+    <br><br><br>
+    <button onclick="newPlayer();">no image :c</button>
+
+</body>
